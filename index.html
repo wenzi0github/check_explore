@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>浏览器检测</title>
+	<style type="text/css">
+		body{margin:0;padding:0;font-family:微软雅黑;width: 400px;height: 300px;margin: 100px auto;border: 1px solid #000;}
+		.content{text-align:center;}
+		table {border: 1px solid #B1CDE3;padding:0;border-collapse: collapse;table-layout:fixed; margin:10px auto;}  
+        td {border: 1px solid #B1CDE3;background: #fff;  font-size:15px;  padding: 3px 3px 3px 8px;color: #4f6b72; width:100px;} 
+	</style>
+</head>
+<body>
+<div class="content">
+	<span>试着用不同的浏览器打开本网页</span>
+	<div>
+		<table id="content" border="1" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>操作系统</td>
+				<td><span id="system"></span></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>呈现引擎</td>
+				<td><span id="engine"></span></td>
+				<td><span id="enginever"></span></td>
+			</tr>
+			<tr>
+				<td>浏览器</td>
+				<td><span id="browser"></span></td>
+				<td><span id="browserver"></span></td>
+			</tr>
+		</table>
+	</div>
+</div>
+</body>
+</html>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="check.js"></script>
+<script type="text/javascript">
+$(function(){
+	var system     = client.system;
+	var engine     = client.engine;
+	var enginever  = client.engine.ver;
+	var browser    = client.browser;
+	var browserver = client.browser.ver;
+	
+	for(var key in system){
+		if(system[key]==true){
+			$("#system").html(key);
+			
+			break;
+		}
+	}
+	
+	for(var key in engine){
+		if(key!="ver" && engine[key]>0){
+			$("#engine").html(key);
+			$("#enginever").html(enginever);
+			
+			break;
+		}
+	}
+	
+	for(var key in browser){
+		if(key!="ver" && browser[key]>0){
+			$("#browser").html(key);
+			$("#browserver").html(browserver);
+			
+			break;
+		}
+	}
+})
+</script>
